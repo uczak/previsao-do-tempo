@@ -21,7 +21,7 @@ public class S extends Infra
 {
 
     //busca json da previsao do tempo
-    private String getPrevisao(String idCity, String tpRequest) throws Exception
+    private static String getPrevisao(String idCity, String tpRequest) throws Exception
     {
         String sJson = "";
         String url = null;
@@ -31,7 +31,7 @@ public class S extends Infra
         {
             switch (tpRequest)
             {
-                case "atual":
+                case "Atual":
                     url = "http://api.openweathermap.org/data/2.5/weather?id=" + idCity + "&appid=4e6327bac3230a583079e31491060b85";
                     break;
                 case "CincoDias":
@@ -50,14 +50,14 @@ public class S extends Infra
         //PopulaPrevisao(sJson);
     }
 
-    private String formataJson(String sJson)
+    private static String formataJson(String sJson)
     {
         int id = 0;
         int indice;
         String a;
         String[] tagsJson =
         {
-            "coord", "weather", "wind", "Clouds", "clouds", "sys", "Rain", "Clear", "main", "Mist"
+            "coord", "weather", "wind", "Clouds", "clouds", "sys", "Rain", "rain", "Clear", "main", "Mist"
         };
         //#region 
         indice = sJson.indexOf("weather");
@@ -97,12 +97,13 @@ public class S extends Infra
         sJson = sJson.replace("}", "");
         sJson = sJson.replace("\"\":", "");
         sJson = sJson.replace("\"\",", "");
+        sJson = sJson.replace(",,", ",");
         sJson = "{" + sJson + "}";
         System.out.println("ja formatado:" + sJson);
         return sJson;
     }
 
-    public List<TOPrevisaoDoTempo> controle(String idCity, String tpRequest)
+    public static List<TOPrevisaoDoTempo> controle(String idCity, String tpRequest)
     {
         TOPrevisaoDoTempo toPrevisaoDoTempo = new TOPrevisaoDoTempo();
         String sJson = "";

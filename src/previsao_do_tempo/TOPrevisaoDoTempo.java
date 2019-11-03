@@ -143,7 +143,7 @@ public class TOPrevisaoDoTempo extends TOLocalizacao
         return por_sol;
     }
 
-    public TOPrevisaoDoTempo PopularTOPrevisaoDoTempo(JSONObject Json)
+    public static TOPrevisaoDoTempo PopularTOPrevisaoDoTempo(JSONObject Json)
     {
         try
         {

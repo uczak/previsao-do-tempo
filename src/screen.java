@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import previsao_do_tempo.W;
 import previsao_do_tempo.TOPrevisaoDoTempo;
+
 public class screen extends javax.swing.JFrame
 {
 
@@ -86,7 +87,7 @@ public class screen extends javax.swing.JFrame
 
         lista.setModel(new javax.swing.AbstractListModel()
         {
-            String[] strings = { "Gravataí", "Porto Alegre", "Cachoeirinha", "São Paulo", "Rio de Janeiro", "Vancouver" };
+            String[] strings = { "Porto Alegre", "São Paulo", "Gravataí", "Canoas", "Cachoeirinha", "Florianopolis" };
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
@@ -170,7 +171,6 @@ public class screen extends javax.swing.JFrame
 
         if (select1.isSelected())
         {
-
             telaPrevisaoAtual(cidadeCelecionada);
         }
         if (select2.isSelected())
@@ -187,11 +187,11 @@ public class screen extends javax.swing.JFrame
 
     private void telaPrevisaoAtual(String cidadeCelecionada)
     {
-        telaScreenPrevisaoAtual = new screenAtual();
-       List<TOPrevisaoDoTempo> ListTOPrevisaoDoTempo = new ArrayList<>();
         W w = new W();
-        ListTOPrevisaoDoTempo = w.buscarPdt(cidadeCelecionada,"1");
-        
+        telaScreenPrevisaoAtual = new screenAtual();
+        TOPrevisaoDoTempo a = w.buscarPdt(cidadeCelecionada, "Atual").get(0);
+        telaScreenPrevisaoAtual.populaTela(a);
+
         telaScreenPrevisaoAtual.setVisible(true);
     }
 

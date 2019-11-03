@@ -7,12 +7,13 @@ package previsao_do_tempo;
 
 import java.util.ArrayList;
 import java.util.List;
-import previsao_do_tempo.S;
+import static previsao_do_tempo.S.controle;
+
 /**
  *
  * @author guiwe
  */
-public class W 
+public class W
 {
 
     public List<TOPrevisaoDoTempo> buscarPdt(String nome_cidade, String tp_previsao)
@@ -29,7 +30,7 @@ public class W
                 ListaToPrevisaoDoTempo.add(toPrevisaoDoTempo);
                 return ListaToPrevisaoDoTempo;
             }
-            ListaToPrevisaoDoTempo = Controle("3468403", tp_previsao);
+            ListaToPrevisaoDoTempo = controle(cod_cidade, tp_previsao);
             return ListaToPrevisaoDoTempo;
         }
         catch (Exception ex)
@@ -44,22 +45,22 @@ public class W
         switch (nome_cidade.toUpperCase())
         {
             case "PORTO ALEGRE":
-                cod_cidade = "";
+                cod_cidade = "3452925";
                 break;
-            case "SAO PAULO":
-                cod_cidade = "";
+            case "SÃO PAULO":
+                cod_cidade = "3448439";
                 break;
-            case "GRAVATAI":
-                cod_cidade = "";
+            case "GRAVATAÍ":
+                cod_cidade = "3462089";
                 break;
             case "CANOAS":
-                cod_cidade = "";
+                cod_cidade = "3467467";
                 break;
             case "CACHOEIRINHA":
-                cod_cidade = "";
+                cod_cidade = "3468403";
                 break;
             case "FLORIANOPOLIS":
-                cod_cidade = "";
+                cod_cidade = "3463237";
                 break;
         }
         return cod_cidade;
