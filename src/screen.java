@@ -189,16 +189,31 @@ public class screen extends javax.swing.JFrame
     {
         W w = new W();
         telaScreenPrevisaoAtual = new screenAtual();
-        TOPrevisaoDoTempo a = w.buscarPdt(cidadeCelecionada, "Atual").get(0);
-        telaScreenPrevisaoAtual.populaTela(a);
-
-        telaScreenPrevisaoAtual.setVisible(true);
+        TOPrevisaoDoTempo toPrevisaoDoTempo = w.buscarPdt(cidadeCelecionada, "Atual").get(0);
+        if (toPrevisaoDoTempo.GetToErro() != null)
+        {
+            telaScreenPrevisaoAtual.populaTela(toPrevisaoDoTempo);
+            telaScreenPrevisaoAtual.setVisible(true);
+        }
+        else
+        {
+            //apresentar mensagem de erro.
+        }
     }
 
     private void telaPrevisaoCincoDias(String cidadeCelecionada)
     {
-        telaScreenPrevisaoCincoDias = new screenCincoDias();
-        telaScreenPrevisaoCincoDias.setVisible(true);
+        W w = new W();
+        List<TOPrevisaoDoTempo> toPrevisaoDoTempo = w.buscarPdt(cidadeCelecionada, "CiincoDias");
+        if (toPrevisaoDoTempo.get(0).GetToErro() != null)
+        {
+            telaScreenPrevisaoCincoDias = new screenCincoDias();
+            telaScreenPrevisaoCincoDias.setVisible(true);
+        }
+        else
+        {
+            //apresentar mensagem de erro.
+        }
     }
     private void formComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentHidden
 
@@ -227,10 +242,12 @@ public class screen extends javax.swing.JFrame
             }
             inicial.setVisible(true);//seta a tela inicial como visivel.
             inicial.select1.setSelected(true);//seta previsao atual como default.
+
         }
         catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex)
         {
-            java.util.logging.Logger.getLogger(screen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(screen.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
     }
 
