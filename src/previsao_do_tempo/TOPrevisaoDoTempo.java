@@ -16,6 +16,7 @@ import org.json.JSONObject;
 public class TOPrevisaoDoTempo extends TOLocalizacao
 {
 
+    private TOErro toErro;
     private double temperatura;
     private int pressao;
     private int umidade;
@@ -36,6 +37,21 @@ public class TOPrevisaoDoTempo extends TOLocalizacao
     private long id1;//descobrir significado
     private double timezone;//descobrir significado
     private long cod;//*
+
+    public void SetToErro(String metodo, String mensagem)
+    {
+        if (this.toErro == null)
+        {
+            this.toErro = new TOErro();
+        }
+        this.toErro.setMetodo(metodo);
+        this.toErro.setMensagem(mensagem);
+    }
+
+    public TOErro GetToErro()
+    {
+        return toErro;
+    }
 
     public void SetTemperatura(double temperatura)
     {
@@ -127,11 +143,11 @@ public class TOPrevisaoDoTempo extends TOLocalizacao
         return por_sol;
     }
 
-    public static List<TOPrevisaoDoTempo> PopularTOPrevisaoDoTempo(JSONObject Json)
+    public TOPrevisaoDoTempo PopularTOPrevisaoDoTempo(JSONObject Json)
     {
         try
         {
-            List<TOPrevisaoDoTempo> lista = new ArrayList<>();
+           // List<TOPrevisaoDoTempo> lista = new ArrayList<>();
             TOPrevisaoDoTempo toPrevisaoDoTempo = new TOPrevisaoDoTempo();
 
             //#region TOLocalizacao 
@@ -192,8 +208,8 @@ public class TOPrevisaoDoTempo extends TOLocalizacao
             {
                 toPrevisaoDoTempo.SetPor_sol((int) Json.get("sunset"));
             }
-            lista.add(toPrevisaoDoTempo);
-            return lista;
+           // lista.add(toPrevisaoDoTempo);
+            return toPrevisaoDoTempo;
         }
         catch (Exception ex)
         {
