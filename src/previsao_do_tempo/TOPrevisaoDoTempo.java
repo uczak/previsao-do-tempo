@@ -5,8 +5,7 @@
  */
 package previsao_do_tempo;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.text.DecimalFormat;
 import org.json.JSONObject;
 
 /**
@@ -17,7 +16,7 @@ public class TOPrevisaoDoTempo extends TOLocalizacao
 {
 
     private TOErro toErro;
-    private double temperatura;
+    private String temperatura;
     private int pressao;
     private int umidade;
     private double temp_min;
@@ -37,6 +36,15 @@ public class TOPrevisaoDoTempo extends TOLocalizacao
     private long id1;//descobrir significado
     private double timezone;//descobrir significado
     private long cod;//*
+    DecimalFormat df = new DecimalFormat("###,##0.0");
+//    public double formatar(double numero)
+//    {
+//        double retorno;
+//        DecimalFormat formata =null;
+//        formata = new DecimalFormat("###,##0.0");
+//        retorno = formata.format(numero);
+//        return retorno;
+//    }
 
     public void SetToErro(String metodo, String mensagem)
     {
@@ -55,10 +63,11 @@ public class TOPrevisaoDoTempo extends TOLocalizacao
 
     public void SetTemperatura(double temperatura)
     {
-        this.temperatura = temperatura;
+        temperatura = temperatura - 273;
+        this.temperatura = df.format(temperatura);
     }
 
-    public double getTemperatura()
+    public String getTemperatura()
     {
         return temperatura;
     }
@@ -143,11 +152,21 @@ public class TOPrevisaoDoTempo extends TOLocalizacao
         return por_sol;
     }
 
+    public void SetDescrisao(String descrisao)
+    {
+        this.descrisao = descrisao;
+    }
+
+    public String getDescrisao()
+    {
+        return descrisao;
+    }
+
     public static TOPrevisaoDoTempo PopularTOPrevisaoDoTempo(JSONObject Json)
     {
         try
         {
-           // List<TOPrevisaoDoTempo> lista = new ArrayList<>();
+            // List<TOPrevisaoDoTempo> lista = new ArrayList<>();
             TOPrevisaoDoTempo toPrevisaoDoTempo = new TOPrevisaoDoTempo();
 
             //#region TOLocalizacao 
@@ -208,7 +227,11 @@ public class TOPrevisaoDoTempo extends TOLocalizacao
             {
                 toPrevisaoDoTempo.SetPor_sol((int) Json.get("sunset"));
             }
-           // lista.add(toPrevisaoDoTempo);
+            if (Json.get("description") != null)
+            {
+                toPrevisaoDoTempo.SetDescrisao((String) Json.get("description"));
+            }
+            // lista.add(toPrevisaoDoTempo);
             return toPrevisaoDoTempo;
         }
         catch (Exception ex)

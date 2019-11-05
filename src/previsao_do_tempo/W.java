@@ -60,7 +60,8 @@ public class W
                 cod_cidade = "3468403";
                 break;
             case "FLORIANOPOLIS":
-                cod_cidade = "3463237";
+                //cod_cidade = "3463237";
+                cod_cidade = "00000";
                 break;
         }
         return cod_cidade;

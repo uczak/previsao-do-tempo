@@ -9,6 +9,7 @@
  */
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import previsao_do_tempo.W;
 import previsao_do_tempo.TOPrevisaoDoTempo;
 
@@ -190,14 +191,14 @@ public class screen extends javax.swing.JFrame
         W w = new W();
         telaScreenPrevisaoAtual = new screenAtual();
         TOPrevisaoDoTempo toPrevisaoDoTempo = w.buscarPdt(cidadeCelecionada, "Atual").get(0);
-        if (toPrevisaoDoTempo.GetToErro() != null)
+        if (toPrevisaoDoTempo.GetToErro() == null)
         {
             telaScreenPrevisaoAtual.populaTela(toPrevisaoDoTempo);
             telaScreenPrevisaoAtual.setVisible(true);
         }
         else
         {
-            //apresentar mensagem de erro.
+            JOptionPane.showMessageDialog(null, toPrevisaoDoTempo.GetToErro().getMensagem());
         }
     }
 
@@ -205,7 +206,7 @@ public class screen extends javax.swing.JFrame
     {
         W w = new W();
         List<TOPrevisaoDoTempo> toPrevisaoDoTempo = w.buscarPdt(cidadeCelecionada, "CiincoDias");
-        if (toPrevisaoDoTempo.get(0).GetToErro() != null)
+        if (toPrevisaoDoTempo.get(0).GetToErro() == null)
         {
             telaScreenPrevisaoCincoDias = new screenCincoDias();
             telaScreenPrevisaoCincoDias.setVisible(true);
