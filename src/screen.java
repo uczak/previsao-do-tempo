@@ -205,7 +205,7 @@ public class screen extends javax.swing.JFrame
     private void telaPrevisaoCincoDias(String cidadeCelecionada)
     {
         W w = new W();
-        List<TOPrevisaoDoTempo> toPrevisaoDoTempo = w.buscarPdt(cidadeCelecionada, "CiincoDias");
+        List<TOPrevisaoDoTempo> toPrevisaoDoTempo = w.buscarPdt(cidadeCelecionada, "CincoDias");
         if (toPrevisaoDoTempo.get(0).GetToErro() == null)
         {
             telaScreenPrevisaoCincoDias = new screenCincoDias();

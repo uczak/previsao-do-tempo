@@ -19,10 +19,10 @@ public class TOPrevisaoDoTempo extends TOLocalizacao
     private String temperatura;
     private int pressao;
     private int umidade;
-    private double temp_min;
-    private double temp_max;
+    private String temp_min;
+    private String temp_max;
     private int visibilidade;
-    private double velocidade_vento;
+    private String velocidade_vento;
     private int nas_sol;
     private int por_sol;
     private String id0;//*
@@ -37,14 +37,6 @@ public class TOPrevisaoDoTempo extends TOLocalizacao
     private double timezone;//descobrir significado
     private long cod;//*
     DecimalFormat df = new DecimalFormat("###,##0.0");
-//    public double formatar(double numero)
-//    {
-//        double retorno;
-//        DecimalFormat formata =null;
-//        formata = new DecimalFormat("###,##0.0");
-//        retorno = formata.format(numero);
-//        return retorno;
-//    }
 
     public void SetToErro(String metodo, String mensagem)
     {
@@ -64,7 +56,7 @@ public class TOPrevisaoDoTempo extends TOLocalizacao
     public void SetTemperatura(double temperatura)
     {
         temperatura = temperatura - 273;
-        this.temperatura = df.format(temperatura);
+        this.temperatura = df.format(temperatura) + "° C";
     }
 
     public String getTemperatura()
@@ -94,20 +86,22 @@ public class TOPrevisaoDoTempo extends TOLocalizacao
 
     public void SetTemp_min(double temp_min)
     {
-        this.temp_min = temp_min;
+        temp_min = temp_min - 273;
+        this.temp_min = df.format(temp_min) + "° C";
     }
 
-    public double getTemp_min()
+    public String getTemp_min()
     {
         return temp_min;
     }
 
     public void SetTemp_max(double temp_max)
     {
-        this.temp_max = temp_max;
+        temp_max = temp_max - 273;
+        this.temp_max = df.format(temp_max) + "° C";
     }
 
-    public double getTemp_max()
+    public String getTemp_max()
     {
         return temp_max;
     }
@@ -124,10 +118,11 @@ public class TOPrevisaoDoTempo extends TOLocalizacao
 
     public void SetVelocidade_vento(double velocidade_vento)
     {
-        this.velocidade_vento = velocidade_vento;
+        velocidade_vento = velocidade_vento * 1.61;
+        this.velocidade_vento = df.format(velocidade_vento) + " Km/h";
     }
 
-    public double getVelocidade_vento()
+    public String getVelocidade_vento()
     {
         return velocidade_vento;
     }
@@ -170,64 +165,64 @@ public class TOPrevisaoDoTempo extends TOLocalizacao
             TOPrevisaoDoTempo toPrevisaoDoTempo = new TOPrevisaoDoTempo();
 
             //#region TOLocalizacao 
-            if (Json.get("lat") != null)
+            if (Json.has("lat") && Json.get("lat") != null)
             {
                 toPrevisaoDoTempo.SetLatitude((double) Json.get("lat"));
             }
-            if (Json.get("lon") != null)
+            if (Json.has("lon") && Json.get("lon") != null)
             {
                 toPrevisaoDoTempo.SetLongitude((double) Json.get("lon"));
             }
-            if (Json.get("id1") != null)
+            if (Json.has("id1") && Json.get("id1") != null)
             {
                 toPrevisaoDoTempo.SetCod_city((int) Json.get("id1"));
             }
-            if (Json.get("name") != null)
+            if (Json.has("name") && Json.get("name") != null)
             {
                 toPrevisaoDoTempo.SetName((String) Json.get("name"));
             }
-            if (Json.get("country") != null)
+            if (Json.has("country") && Json.get("country") != null)
             {
                 toPrevisaoDoTempo.SetPais((String) Json.get("country"));
             }
             //#endRegion
-            if (Json.get("temp") != null)
+            if (Json.has("temp") && Json.get("temp") != null)
             {
                 toPrevisaoDoTempo.SetTemperatura((double) Json.get("temp"));
             }
-            if (Json.get("pressure") != null)
+            if (Json.has("pressure") && Json.get("pressure") != null)
             {
                 toPrevisaoDoTempo.SetPressao((int) Json.get("pressure"));
             }
-            if (Json.get("humidity") != null)
+            if (Json.has("humidity") && Json.get("humidity") != null)
             {
                 toPrevisaoDoTempo.SetUmidade((int) Json.get("humidity"));
             }
-            if (Json.get("temp_min") != null)
+            if (Json.has("temp_min") && Json.get("temp_min") != null)
             {
                 toPrevisaoDoTempo.SetTemp_min((double) Json.get("temp_min"));
             }
-            if (Json.get("temp_max") != null)
+            if (Json.has("temp_max") && Json.get("temp_max") != null)
             {
                 toPrevisaoDoTempo.SetTemp_max((double) Json.get("temp_max"));
             }
-            if (Json.get("visibility") != null)
+            if (Json.has("visibility") && Json.get("visibility") != null)
             {
                 toPrevisaoDoTempo.SetVisibilidade((int) Json.get("visibility"));
             }
-            if (Json.get("speed") != null)
+            if (Json.has("speed") && Json.get("speed") != null)
             {
                 toPrevisaoDoTempo.SetVelocidade_vento((double) Json.get("speed"));
             }
-            if (Json.get("sunrise") != null)
+            if (Json.has("sunrise") && Json.get("sunrise") != null)
             {
                 toPrevisaoDoTempo.SetNas_sol((int) Json.get("sunrise"));
             }
-            if (Json.get("sunset") != null)
+            if (Json.has("sunset") && Json.get("sunset") != null)
             {
                 toPrevisaoDoTempo.SetPor_sol((int) Json.get("sunset"));
             }
-            if (Json.get("description") != null)
+            if (Json.has("description") && Json.get("description") != null)
             {
                 toPrevisaoDoTempo.SetDescrisao((String) Json.get("description"));
             }

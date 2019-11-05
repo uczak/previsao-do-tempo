@@ -117,9 +117,22 @@ public class S extends Infra
                 ListaToPrevisaoDoTempo.add(toPrevisaoDoTempo);
                 return ListaToPrevisaoDoTempo;
             }
-            sJson = formataJson(sJson);
-            JSONObject Json = new JSONObject(sJson.toString());//trasforma a string em objeto.
-            ListaToPrevisaoDoTempo.add(PopularTOPrevisaoDoTempo(Json));//adiciona o objeto na lista.
+            if ("CincoDias".equals(tpRequest))
+            {
+                int indice = sJson.indexOf("\"list\":[");
+                sJson = "{" + sJson.substring(indice, sJson.length());
+                JSONObject oJson = new JSONObject(sJson.toString());//trasforma a string em objeto.
+                JSONArray objetoWeather = oJson.getJSONArray("list");//trasforma o objeto em um array.
+                objetoWeather.getJSONObject(0);
+                objetoWeather.getJSONObject(1);
+                objetoWeather.getJSONObject(2);
+            }
+            else
+            {
+                sJson = formataJson(sJson);
+                JSONObject Json = new JSONObject(sJson.toString());//trasforma a string em objeto.
+                ListaToPrevisaoDoTempo.add(PopularTOPrevisaoDoTempo(Json));//adiciona o objeto na lista.
+            }
             return ListaToPrevisaoDoTempo;
         }
         catch (Exception ex)
