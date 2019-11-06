@@ -36,6 +36,7 @@ public class TOPrevisaoDoTempo extends TOLocalizacao
     private long id1;//descobrir significado
     private double timezone;//descobrir significado
     private long cod;//*
+    private String td_txt;
     DecimalFormat df = new DecimalFormat("###,##0.0");
 
     public void SetToErro(String metodo, String mensagem)
@@ -56,7 +57,8 @@ public class TOPrevisaoDoTempo extends TOLocalizacao
     public void SetTemperatura(double temperatura)
     {
         temperatura = temperatura - 273;
-        this.temperatura = df.format(temperatura) + "° C";
+        //this.temperatura = df.format(temperatura) + "° C";
+          this.temperatura = df.format(temperatura);
     }
 
     public String getTemperatura()
@@ -87,7 +89,8 @@ public class TOPrevisaoDoTempo extends TOLocalizacao
     public void SetTemp_min(double temp_min)
     {
         temp_min = temp_min - 273;
-        this.temp_min = df.format(temp_min) + "° C";
+        //this.temp_min = df.format(temp_min) + "° C";
+        this.temp_min = df.format(temp_min); 
     }
 
     public String getTemp_min()
@@ -98,7 +101,8 @@ public class TOPrevisaoDoTempo extends TOLocalizacao
     public void SetTemp_max(double temp_max)
     {
         temp_max = temp_max - 273;
-        this.temp_max = df.format(temp_max) + "° C";
+        //this.temp_max = df.format(temp_max) + "° C";
+        this.temp_max = df.format(temp_max);
     }
 
     public String getTemp_max()
@@ -155,6 +159,16 @@ public class TOPrevisaoDoTempo extends TOLocalizacao
     public String getDescrisao()
     {
         return descrisao;
+    }
+
+    private void SetDt_txt(String td_txt)
+    {
+        this.td_txt = td_txt.substring(0, 10);
+    }
+
+    public String getDt_txt()
+    {
+        return td_txt;
     }
 
     public static TOPrevisaoDoTempo PopularTOPrevisaoDoTempo(JSONObject Json)
@@ -226,6 +240,10 @@ public class TOPrevisaoDoTempo extends TOLocalizacao
             {
                 toPrevisaoDoTempo.SetDescrisao((String) Json.get("description"));
             }
+            if (Json.has("dt_txt") && Json.get("dt_txt") != null)
+            {
+                toPrevisaoDoTempo.SetDt_txt((String) Json.get("dt_txt"));
+            }
             // lista.add(toPrevisaoDoTempo);
             return toPrevisaoDoTempo;
         }
@@ -234,4 +252,5 @@ public class TOPrevisaoDoTempo extends TOLocalizacao
             throw ex;
         }
     }
+
 }

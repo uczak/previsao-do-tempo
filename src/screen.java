@@ -189,10 +189,11 @@ public class screen extends javax.swing.JFrame
     private void telaPrevisaoAtual(String cidadeCelecionada)
     {
         W w = new W();
-        telaScreenPrevisaoAtual = new screenAtual();
+
         TOPrevisaoDoTempo toPrevisaoDoTempo = w.buscarPdt(cidadeCelecionada, "Atual").get(0);
         if (toPrevisaoDoTempo.GetToErro() == null)
         {
+            telaScreenPrevisaoAtual = new screenAtual();
             telaScreenPrevisaoAtual.populaTela(toPrevisaoDoTempo);
             telaScreenPrevisaoAtual.setVisible(true);
         }
@@ -205,15 +206,16 @@ public class screen extends javax.swing.JFrame
     private void telaPrevisaoCincoDias(String cidadeCelecionada)
     {
         W w = new W();
-        List<TOPrevisaoDoTempo> toPrevisaoDoTempo = w.buscarPdt(cidadeCelecionada, "CincoDias");
-        if (toPrevisaoDoTempo.get(0).GetToErro() == null)
+        List<TOPrevisaoDoTempo> ListtoPrevisaoDoTempo = w.buscarPdt(cidadeCelecionada, "CincoDias");
+        if (ListtoPrevisaoDoTempo.get(0).GetToErro() == null)
         {
             telaScreenPrevisaoCincoDias = new screenCincoDias();
+            telaScreenPrevisaoCincoDias.populaTela(ListtoPrevisaoDoTempo);
             telaScreenPrevisaoCincoDias.setVisible(true);
         }
         else
         {
-            //apresentar mensagem de erro.
+            JOptionPane.showMessageDialog(null, ListtoPrevisaoDoTempo.get(0).GetToErro().getMensagem());
         }
     }
     private void formComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentHidden

@@ -7,11 +7,15 @@ package previsao_do_tempo;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
+import java.text.SimpleDateFormat;
 import previsao_do_tempo.HttpExemplo;
 import java.util.ArrayList;
 import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import java.time.LocalDate;  // import the LocalDate class
+import java.time.Month;
+import java.time.format.DateTimeFormatter;
 
 /**
  *
@@ -60,10 +64,21 @@ public class S extends Infra
             "coord", "weather", "wind", "Clouds", "clouds", "sys", "Rain", "rain", "Clear", "main", "Mist"
         };
         //#region 
+        if (!sJson.contains("weather"))
+        {
+            return "";
+        }
         indice = sJson.indexOf("weather");
         String parte1 = sJson.substring(0, indice);//recorta a string antes do array.
 
-        indice = sJson.indexOf("base");
+        if (!sJson.contains("base"))
+        {
+            indice = sJson.indexOf("}],");
+        }
+        else
+        {
+            indice = sJson.indexOf("base");
+        }
         String parte2 = sJson.substring(indice, sJson.length());//recorta a string depois do array.
 
         JSONObject oJson = new JSONObject(sJson.toString());//trasforma a string em objeto.
@@ -97,6 +112,7 @@ public class S extends Infra
         sJson = sJson.replace("}", "");
         sJson = sJson.replace("\"\":", "");
         sJson = sJson.replace("\"\",", "");
+        sJson = sJson.replace("\",\",", " \",");
         sJson = sJson.replace(",,", ",");
         sJson = "{" + sJson + "}";
         System.out.println("ja formatado:" + sJson);
@@ -107,7 +123,9 @@ public class S extends Infra
     {
         TOPrevisaoDoTempo toPrevisaoDoTempo = new TOPrevisaoDoTempo();
         String sJson = "";
+        String sJsonFormatado = "";
         List<TOPrevisaoDoTempo> ListaToPrevisaoDoTempo = new ArrayList<>();
+        LocalDate dataAtual = LocalDate.now();//data atual do sistema.
         try
         {
             sJson = getPrevisao(idCity, tpRequest);//busca a string com json.
@@ -123,9 +141,25 @@ public class S extends Infra
                 sJson = "{" + sJson.substring(indice, sJson.length());
                 JSONObject oJson = new JSONObject(sJson.toString());//trasforma a string em objeto.
                 JSONArray objetoWeather = oJson.getJSONArray("list");//trasforma o objeto em um array.
-                objetoWeather.getJSONObject(0);
-                objetoWeather.getJSONObject(1);
-                objetoWeather.getJSONObject(2);
+                for (Object item : objetoWeather)
+                {
+                    sJsonFormatado = formataJson(item.toString());
+                    if ("".equals(sJsonFormatado))
+                    {
+                        toPrevisaoDoTempo.SetToErro("Método: controle.", "Mensagem: String mal formatada ou vazia.");
+                        ListaToPrevisaoDoTempo.add(toPrevisaoDoTempo);
+                        return ListaToPrevisaoDoTempo;
+                    }
+                    JSONObject Json = new JSONObject(sJsonFormatado.toString());//trasforma a string em objeto.
+                    toPrevisaoDoTempo = PopularTOPrevisaoDoTempo(Json);//pega o objeto populado.
+
+                    String sData = toPrevisaoDoTempo.getDt_txt();//pega a data do objeto para comparar com a data atual.
+                    LocalDate data = LocalDate.parse(sData, DateTimeFormatter.ISO_DATE);//converte em um formato valido.
+                    if (data.isAfter(dataAtual))//se a data e maior que hoje.
+                    {
+                        ListaToPrevisaoDoTempo.add(toPrevisaoDoTempo);//adiciona o objeto na lista.
+                    }
+                }
             }
             else
             {
