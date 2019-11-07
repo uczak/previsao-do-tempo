@@ -182,9 +182,9 @@ public class screenAtual extends javax.swing.JFrame
     }//GEN-LAST:event_btVoltarTelaInicialActionPerformed
     public void populaTela(TOPrevisaoDoTempo toPrevisaoDoTempo)
     {
-        jLabel1.setText(String.valueOf(toPrevisaoDoTempo.getTemperatura()));
-        jLabel7.setText(String.valueOf(toPrevisaoDoTempo.getTemp_max()));
-        jLabel8.setText(String.valueOf(toPrevisaoDoTempo.getTemp_min()));
+        jLabel1.setText(String.valueOf(toPrevisaoDoTempo.getTemperatura() + "°C"));
+        jLabel7.setText(String.valueOf(toPrevisaoDoTempo.getTemp_max() + "°C"));
+        jLabel8.setText(String.valueOf(toPrevisaoDoTempo.getTemp_min() + "°C"));
         jLabel9.setText(String.valueOf(toPrevisaoDoTempo.getUmidade() + "%"));
         jLabel10.setText(String.valueOf(toPrevisaoDoTempo.getPressao()));
         jLabel11.setText(String.valueOf(toPrevisaoDoTempo.GetPais() + "-" + toPrevisaoDoTempo.GetName()));

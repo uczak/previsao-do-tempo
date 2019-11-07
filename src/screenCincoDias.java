@@ -268,14 +268,15 @@ public class screenCincoDias extends javax.swing.JFrame
 
     void populaTela(List<TOPrevisaoDoTempo> ListtoPrevisaoDoTempo)
     {
-        String temp_maior = "0.0";
-        String temp_menor = "0.0";
+        String temp_maior = ListtoPrevisaoDoTempo.get(0).getTemp_max();
+        String temp_menor = ListtoPrevisaoDoTempo.get(0).getTemp_min();
         List<String> maior = new ArrayList<>();
         List<String> menor = new ArrayList<>();
         List<String> dias = new ArrayList<>();
         LocalDate dataAtual = LocalDate.now();//data atual do sistema.
         for (int i = 0; i < 5; i++)
         {
+            temp_menor = ListtoPrevisaoDoTempo.get(i*8).getTemp_min();
             for (TOPrevisaoDoTempo item : ListtoPrevisaoDoTempo)
             {
                 if (LocalDate.parse(item.getDt_txt(), DateTimeFormatter.ISO_DATE).getDayOfMonth() == dataAtual.getDayOfMonth() + i + 1)
@@ -284,7 +285,7 @@ public class screenCincoDias extends javax.swing.JFrame
                     {
                         temp_maior = item.getTemp_max();
                     }
-                    if (Double.parseDouble(item.getTemp_min().replace(',', '.')) > Double.parseDouble(temp_menor.replace(',', '.')))
+                    if (Double.parseDouble(item.getTemp_min().replace(',', '.')) < Double.parseDouble(temp_menor.replace(',', '.')))
                     {
                         temp_menor = item.getTemp_min();
                     }
@@ -293,32 +294,32 @@ public class screenCincoDias extends javax.swing.JFrame
             maior.add(temp_maior);
             menor.add(temp_menor);
             temp_maior = "0";
-            temp_menor = "0";
+           
         }
         //D + 1
         //jLabel7.setText(String.valueOf(dias.get(0)));
-        jLabel8.setText(String.valueOf(maior.get(0)));
-        jLabel9.setText(String.valueOf(menor.get(0)));
+        jLabel8.setText(String.valueOf(maior.get(0) + "°C"));
+        jLabel9.setText(String.valueOf(menor.get(0) + "°C"));
 
         //D + 2
         //jLabel10.setText(String.valueOf(dias.get(1)));
-        jLabel11.setText(String.valueOf(maior.get(1)));
-        jLabel12.setText(String.valueOf(menor.get(1)));
+        jLabel11.setText(String.valueOf(maior.get(1) + "°C"));
+        jLabel12.setText(String.valueOf(menor.get(1) + "°C"));
 
         //D + 3
         //jLabel13.setText(String.valueOf(dias.get(2)));
-        jLabel14.setText(String.valueOf(maior.get(2)));
-        jLabel15.setText(String.valueOf(menor.get(2)));
+        jLabel14.setText(String.valueOf(maior.get(2) + "°C"));
+        jLabel15.setText(String.valueOf(menor.get(2) + "°C"));
 
         //D + 4
         //jLabel16.setText(String.valueOf(dias.get(3)));
-        jLabel17.setText(String.valueOf(maior.get(3)));
-        jLabel18.setText(String.valueOf(menor.get(3)));
+        jLabel17.setText(String.valueOf(maior.get(3) + "°C"));
+        jLabel18.setText(String.valueOf(menor.get(3) + "°C"));
 
         //D + 5
         //jLabel19.setText(String.valueOf(dias.get(4)));
-        jLabel20.setText(String.valueOf(maior.get(4)));
-        jLabel21.setText(String.valueOf(menor.get(4)));
+        jLabel20.setText(String.valueOf(maior.get(4) + "°C"));
+        jLabel21.setText(String.valueOf(menor.get(4) + "°C"));
 
     }
 
