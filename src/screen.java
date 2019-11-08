@@ -178,12 +178,6 @@ public class screen extends javax.swing.JFrame
         {
             telaPrevisaoCincoDias(cidadeCelecionada);
         }
-        //inicial.setVisible(false);
-        //btnClick.setText("Voltar");
-//        jPanel1.setVisible(false);
-//        jPanel2.setVisible(false);
-//        jPanel3.setVisible(false);
-
     }//GEN-LAST:event_btBuscaPrevisaoDoTempoActionPerformed
 
     private void telaPrevisaoAtual(String cidadeCelecionada)

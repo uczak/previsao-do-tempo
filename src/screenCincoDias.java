@@ -75,38 +75,55 @@ public class screenCincoDias extends javax.swing.JFrame
 
         jLabel6.setText("DIA:");
 
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("jLabel7");
 
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("jLabel8");
 
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("jLabel9");
 
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("jLabel10");
 
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("jLabel11");
 
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setText("jLabel12");
 
+        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel13.setText("jLabel13");
 
+        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel14.setText("jLabel14");
 
+        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel15.setText("jLabel15");
 
+        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel16.setText("jLabel16");
 
+        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel17.setText("jLabel17");
 
+        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel18.setText("jLabel18");
 
+        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel19.setText("jLabel19");
 
+        jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel20.setText("jLabel20");
 
+        jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel21.setText("jLabel21");
 
         jLabel22.setText("jLabel22");
 
+        jLabel23.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel23.setText("jLabel23");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -119,9 +136,6 @@ public class screenCincoDias extends javax.swing.JFrame
                         .addGap(22, 22, 22)
                         .addComponent(btVoltarTelaInicial))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(170, 170, 170)
-                        .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(51, 51, 51)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel2)
@@ -131,10 +145,8 @@ public class screenCincoDias extends javax.swing.JFrame
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(53, 53, 53)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel22)
-                                    .addComponent(jLabel23)))
+                                .addGap(51, 51, 51)
+                                .addComponent(jLabel22))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addGroup(layout.createSequentialGroup()
@@ -147,14 +159,14 @@ public class screenCincoDias extends javax.swing.JFrame
                                         .addComponent(jLabel11))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel7)
-                                        .addGap(46, 46, 46)
+                                        .addGap(54, 54, 54)
                                         .addComponent(jLabel10)))
-                                .addGap(40, 40, 40)
+                                .addGap(54, 54, 54)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel13)
                                     .addComponent(jLabel14)
                                     .addComponent(jLabel15))
-                                .addGap(45, 45, 45)
+                                .addGap(55, 55, 55)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel18)
@@ -166,9 +178,15 @@ public class screenCincoDias extends javax.swing.JFrame
                                         .addComponent(jLabel20))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addComponent(jLabel16)
-                                        .addGap(39, 39, 39)
-                                        .addComponent(jLabel19)))))))
-                .addContainerGap(71, Short.MAX_VALUE))
+                                        .addGap(54, 54, 54)
+                                        .addComponent(jLabel19))))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(170, 170, 170)
+                        .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(184, 184, 184)
+                        .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -176,12 +194,14 @@ public class screenCincoDias extends javax.swing.JFrame
                 .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(7, 7, 7)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(jLabel23)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(47, 47, 47)
                         .addComponent(jLabel22)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(jLabel7)
@@ -270,6 +290,7 @@ public class screenCincoDias extends javax.swing.JFrame
     {
         String temp_maior = ListtoPrevisaoDoTempo.get(0).getTemp_max();
         String temp_menor = ListtoPrevisaoDoTempo.get(0).getTemp_min();
+        String dia ="";
         List<String> maior = new ArrayList<>();
         List<String> menor = new ArrayList<>();
         List<String> dias = new ArrayList<>();
@@ -281,6 +302,7 @@ public class screenCincoDias extends javax.swing.JFrame
             {
                 if (LocalDate.parse(item.getDt_txt(), DateTimeFormatter.ISO_DATE).getDayOfMonth() == dataAtual.getDayOfMonth() + i + 1)
                 {
+                    dia = String.valueOf(LocalDate.parse(item.getDt_txt()).getDayOfMonth());
                     if (Double.parseDouble(item.getTemp_max().replace(',', '.')) > Double.parseDouble(temp_maior.replace(',', '.')))
                     {
                         temp_maior = item.getTemp_max();
@@ -291,33 +313,34 @@ public class screenCincoDias extends javax.swing.JFrame
                     }
                 }
             }
+            dias.add(dia);
             maior.add(temp_maior);
             menor.add(temp_menor);
             temp_maior = "0";
            
         }
         //D + 1
-        //jLabel7.setText(String.valueOf(dias.get(0)));
+        jLabel7.setText(String.valueOf(dias.get(0)));
         jLabel8.setText(String.valueOf(maior.get(0) + "°C"));
         jLabel9.setText(String.valueOf(menor.get(0) + "°C"));
 
         //D + 2
-        //jLabel10.setText(String.valueOf(dias.get(1)));
+        jLabel10.setText(String.valueOf(dias.get(1)));
         jLabel11.setText(String.valueOf(maior.get(1) + "°C"));
         jLabel12.setText(String.valueOf(menor.get(1) + "°C"));
 
         //D + 3
-        //jLabel13.setText(String.valueOf(dias.get(2)));
+        jLabel13.setText(String.valueOf(dias.get(2)));
         jLabel14.setText(String.valueOf(maior.get(2) + "°C"));
         jLabel15.setText(String.valueOf(menor.get(2) + "°C"));
 
         //D + 4
-        //jLabel16.setText(String.valueOf(dias.get(3)));
+        jLabel16.setText(String.valueOf(dias.get(3)));
         jLabel17.setText(String.valueOf(maior.get(3) + "°C"));
         jLabel18.setText(String.valueOf(menor.get(3) + "°C"));
 
         //D + 5
-        //jLabel19.setText(String.valueOf(dias.get(4)));
+        jLabel19.setText(String.valueOf(dias.get(4)));
         jLabel20.setText(String.valueOf(maior.get(4) + "°C"));
         jLabel21.setText(String.valueOf(menor.get(4) + "°C"));
 
