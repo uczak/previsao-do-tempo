@@ -286,18 +286,18 @@ public class screenCincoDias extends javax.swing.JFrame
     private java.awt.Label label1;
     // End of variables declaration//GEN-END:variables
 
-    void populaTela(List<TOPrevisaoDoTempo> ListtoPrevisaoDoTempo)
+    public void populaTela(List<TOPrevisaoDoTempo> ListtoPrevisaoDoTempo, TOPrevisaoDoTempo toPrevisaoDoTempo)
     {
         String temp_maior = ListtoPrevisaoDoTempo.get(0).getTemp_max();
         String temp_menor = ListtoPrevisaoDoTempo.get(0).getTemp_min();
-        String dia ="";
+        String dia = "";
         List<String> maior = new ArrayList<>();
         List<String> menor = new ArrayList<>();
         List<String> dias = new ArrayList<>();
         LocalDate dataAtual = LocalDate.now();//data atual do sistema.
         for (int i = 0; i < 5; i++)
         {
-            temp_menor = ListtoPrevisaoDoTempo.get(i*8).getTemp_min();
+            temp_menor = ListtoPrevisaoDoTempo.get(i * 8).getTemp_min();
             for (TOPrevisaoDoTempo item : ListtoPrevisaoDoTempo)
             {
                 if (LocalDate.parse(item.getDt_txt(), DateTimeFormatter.ISO_DATE).getDayOfMonth() == dataAtual.getDayOfMonth() + i + 1)
@@ -317,8 +317,12 @@ public class screenCincoDias extends javax.swing.JFrame
             maior.add(temp_maior);
             menor.add(temp_menor);
             temp_maior = "0";
-           
+
         }
+        //prev atual
+        jLabel23.setText(String.valueOf(toPrevisaoDoTempo.getDescrisao()));
+        jLabel22.setText(String.valueOf(toPrevisaoDoTempo.getTemperatura()+ "°C"));
+        
         //D + 1
         jLabel7.setText(String.valueOf(dias.get(0)));
         jLabel8.setText(String.valueOf(maior.get(0) + "°C"));

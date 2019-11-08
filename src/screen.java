@@ -201,10 +201,11 @@ public class screen extends javax.swing.JFrame
     {
         W w = new W();
         List<TOPrevisaoDoTempo> ListtoPrevisaoDoTempo = w.buscarPdt(cidadeCelecionada, "CincoDias");
+        TOPrevisaoDoTempo toPrevisaoDoTempo = w.buscarPdt(cidadeCelecionada, "Atual").get(0);
         if (ListtoPrevisaoDoTempo.get(0).GetToErro() == null)
         {
             telaScreenPrevisaoCincoDias = new screenCincoDias();
-            telaScreenPrevisaoCincoDias.populaTela(ListtoPrevisaoDoTempo);
+            telaScreenPrevisaoCincoDias.populaTela(ListtoPrevisaoDoTempo,toPrevisaoDoTempo);
             telaScreenPrevisaoCincoDias.setVisible(true);
         }
         else
