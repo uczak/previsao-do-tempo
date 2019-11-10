@@ -1,0 +1,9 @@
+Mensagem: Exception:: java.io.IOException: Server returned HTTP response code: 400 for URL: http://api.openweathermap.org/data/2.5/weather?id=00000&appid=4e6327bac3230a583079e31491060b85.
+Mensagem: Exception:: java.io.IOException: Server returned HTTP response code: 400 for URL: http://api.openweathermap.org/data/2.5/weather?id=00000&appid=4e6327bac3230a583079e31491060b85.
+Mensagem: Exception:: java.lang.ClassCastException: java.lang.Integer cannot be cast to java.lang.Double.
+Mensagem: Exception:: java.io.IOException: Server returned HTTP response code: 400 for URL: http://api.openweathermap.org/data/2.5/forecast?id=00000&appid=4e6327bac3230a583079e31491060b85.
+Mensagem: Exception:: java.lang.ClassCastException: java.lang.Integer cannot be cast to java.lang.Double.
+Mensagem: Exception:: java.lang.ClassCastException: java.lang.Integer cannot be cast to java.lang.Double.
+Mensagem: Exception:: java.lang.ClassCastException: java.lang.Integer cannot be cast to java.lang.Double.
+Mensagem: Exception:: java.lang.ClassCastException: java.lang.Integer cannot be cast to java.lang.Double.
+Mensagem: Exception:: java.lang.ClassCastException: java.lang.Integer cannot be cast to java.lang.Double.

@@ -146,9 +146,10 @@ public class S extends Infra
                     sJsonFormatado = formataJson(item.toString());
                     if ("".equals(sJsonFormatado))
                     {
-                        toPrevisaoDoTempo.SetToErro("Método: controle.", "Mensagem: String mal formatada ou vazia.");
-                        ListaToPrevisaoDoTempo.add(toPrevisaoDoTempo);
-                        return ListaToPrevisaoDoTempo;
+                        TOPrevisaoDoTempo toPrevisaoDoTempoEr = new TOPrevisaoDoTempo();
+                        toPrevisaoDoTempoEr.SetToErro("Método: controle.", "Mensagem: String mal formatada ou vazia.");
+                        ListaToPrevisaoDoTempo = new ArrayList<>();
+                        ListaToPrevisaoDoTempo.add(toPrevisaoDoTempoEr);
                     }
                     JSONObject Json = new JSONObject(sJsonFormatado.toString());//trasforma a string em objeto.
                     toPrevisaoDoTempo = PopularTOPrevisaoDoTempo(Json);//pega o objeto populado.
@@ -171,10 +172,11 @@ public class S extends Infra
         }
         catch (Exception ex)
         {
-            toPrevisaoDoTempo.SetToErro("Método: controle.", "Mensagem: Exception:: " + ex + ".");
-            ListaToPrevisaoDoTempo.add(toPrevisaoDoTempo);
+            TOPrevisaoDoTempo toPrevisaoDoTempoEx = new TOPrevisaoDoTempo();
+            toPrevisaoDoTempoEx.SetToErro("Método: controle.", "Mensagem: Exception:: " + ex + ".");
+            ListaToPrevisaoDoTempo = new ArrayList<>();
+            ListaToPrevisaoDoTempo.add(toPrevisaoDoTempoEx);
             return ListaToPrevisaoDoTempo;
-
         }
     }
 }

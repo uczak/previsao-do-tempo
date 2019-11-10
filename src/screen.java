@@ -7,10 +7,15 @@
  *
  * @author 121202310
  */
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import previsao_do_tempo.W;
+import org.apache.commons.lang.StringUtils;
 import previsao_do_tempo.TOPrevisaoDoTempo;
 
 public class screen extends javax.swing.JFrame
@@ -42,6 +47,7 @@ public class screen extends javax.swing.JFrame
         select1 = new javax.swing.JRadioButton();
         select2 = new javax.swing.JRadioButton();
         labelPrevisaoDoTempo = new java.awt.Label();
+        jLabel1 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -85,6 +91,13 @@ public class screen extends javax.swing.JFrame
                 formComponentHidden(evt);
             }
         });
+        addWindowListener(new java.awt.event.WindowAdapter()
+        {
+            public void windowActivated(java.awt.event.WindowEvent evt)
+            {
+                formWindowActivated(evt);
+            }
+        });
 
         lista.setModel(new javax.swing.AbstractListModel()
         {
@@ -126,24 +139,34 @@ public class screen extends javax.swing.JFrame
         labelPrevisaoDoTempo.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         labelPrevisaoDoTempo.setText("PREVISÃO DO TEMPO");
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(labelPrevisaoDoTempo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(49, 49, 49))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(166, 166, 166)
+                        .addComponent(select2)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(113, 113, 113)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(select1)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
-                            .addComponent(btBuscaPrevisaoDoTempo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(166, 166, 166)
-                        .addComponent(select2)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(select1)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(btBuscaPrevisaoDoTempo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(127, 127, 127))
         );
         layout.setVerticalGroup(
@@ -151,14 +174,16 @@ public class screen extends javax.swing.JFrame
             .addGroup(layout.createSequentialGroup()
                 .addComponent(labelPrevisaoDoTempo, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(select1)
                     .addComponent(select2))
                 .addGap(18, 18, 18)
                 .addComponent(btBuscaPrevisaoDoTempo)
-                .addGap(66, 66, 66))
+                .addGap(40, 40, 40))
         );
 
         setSize(new java.awt.Dimension(380, 356));
@@ -167,16 +192,24 @@ public class screen extends javax.swing.JFrame
 
     private void btBuscaPrevisaoDoTempoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscaPrevisaoDoTempoActionPerformed
         String cidadeCelecionada = lista.getSelectedValue();
-        System.out.println(cidadeCelecionada);
-        //jScrollPane1.setVisible(false);
 
-        if (select1.isSelected())
+        if (cidadeCelecionada == null)
         {
-            telaPrevisaoAtual(cidadeCelecionada);
+            JOptionPane.showMessageDialog(null, "Você não selecionou uma cidade.");
         }
-        if (select2.isSelected())
+        else
         {
-            telaPrevisaoCincoDias(cidadeCelecionada);
+            System.out.println(cidadeCelecionada);
+            if (select1.isSelected())
+            {
+                telaPrevisaoAtual(cidadeCelecionada);
+
+            }
+            if (select2.isSelected())
+            {
+
+                telaPrevisaoCincoDias(cidadeCelecionada);
+            }
         }
     }//GEN-LAST:event_btBuscaPrevisaoDoTempoActionPerformed
 
@@ -193,7 +226,15 @@ public class screen extends javax.swing.JFrame
         }
         else
         {
-            JOptionPane.showMessageDialog(null, toPrevisaoDoTempo.GetToErro().getMensagem());
+            try
+            {
+                String retorno = w.GravarLog(toPrevisaoDoTempo.GetToErro().getMensagem());
+                JOptionPane.showMessageDialog(null, "Erro gravado no arquivo." + toPrevisaoDoTempo.GetToErro().getMensagem());
+            }
+            catch (Exception ex)
+            {
+                JOptionPane.showMessageDialog(null, "Não foi possivel gravar os logs de erro.");
+            }
         }
     }
 
@@ -202,15 +243,31 @@ public class screen extends javax.swing.JFrame
         W w = new W();
         List<TOPrevisaoDoTempo> ListtoPrevisaoDoTempo = w.buscarPdt(cidadeCelecionada, "CincoDias");
         TOPrevisaoDoTempo toPrevisaoDoTempo = w.buscarPdt(cidadeCelecionada, "Atual").get(0);
-        if (ListtoPrevisaoDoTempo.get(0).GetToErro() == null)
+        if (ListtoPrevisaoDoTempo.get(0).GetToErro() == null && toPrevisaoDoTempo.GetToErro() == null)
         {
             telaScreenPrevisaoCincoDias = new screenCincoDias();
-            telaScreenPrevisaoCincoDias.populaTela(ListtoPrevisaoDoTempo,toPrevisaoDoTempo);
+            telaScreenPrevisaoCincoDias.populaTela(ListtoPrevisaoDoTempo, toPrevisaoDoTempo);
             telaScreenPrevisaoCincoDias.setVisible(true);
         }
         else
         {
-            JOptionPane.showMessageDialog(null, ListtoPrevisaoDoTempo.get(0).GetToErro().getMensagem());
+            try
+            {
+                if (ListtoPrevisaoDoTempo.get(0).GetToErro() != null)
+                {
+                    String retorno = w.GravarLog(ListtoPrevisaoDoTempo.get(0).GetToErro().getMensagem());
+                    JOptionPane.showMessageDialog(null, "Erro gravado no arquivo." + ListtoPrevisaoDoTempo.get(0).GetToErro().getMensagem());
+                }
+                else
+                {
+                    String retorno = w.GravarLog(toPrevisaoDoTempo.GetToErro().getMensagem());
+                    JOptionPane.showMessageDialog(null, "Erro gravado no arquivo." + toPrevisaoDoTempo.GetToErro().getMensagem());
+                }
+            }
+            catch (Exception ex)
+            {
+                JOptionPane.showMessageDialog(null, "Não foi possivel gravar os logs de erro.");
+            }
         }
     }
     private void formComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentHidden
@@ -225,6 +282,12 @@ public class screen extends javax.swing.JFrame
     {//GEN-HEADEREND:event_select2ActionPerformed
 
     }//GEN-LAST:event_select2ActionPerformed
+    private void formWindowActivated(java.awt.event.WindowEvent evt)//GEN-FIRST:event_formWindowActivated
+    {//GEN-HEADEREND:event_formWindowActivated
+        hora a = new hora();
+        Thread t = new Thread(a);
+        t.start();
+    }//GEN-LAST:event_formWindowActivated
 
     public static void main(String args[])
     {
@@ -238,6 +301,7 @@ public class screen extends javax.swing.JFrame
                     break;
                 }
             }
+
             inicial.setVisible(true);//seta a tela inicial como visivel.
             inicial.select1.setSelected(true);//seta previsao atual como default.
 
@@ -249,11 +313,57 @@ public class screen extends javax.swing.JFrame
         }
     }
 
+    public class hora implements Runnable
+    {
+
+        private int segundos;
+        private int minutos;
+        private int horas;
+        private Calendar data;
+        private String hora;
+
+        public void run()
+        {
+            try
+            {
+                while (true)
+                {
+                    Thread.sleep(1000);
+                    data = Calendar.getInstance();
+                    horas = data.get(Calendar.HOUR_OF_DAY);
+                    minutos = data.get(Calendar.MINUTE);
+                    segundos = data.get(Calendar.SECOND);
+                    if (horas > 0 && horas < 23)
+                    {
+                        horas--;
+                    }
+                    if (horas == 0)
+                    {
+                        horas = 01;
+                    }
+                    hora = StringUtils.leftPad(String.valueOf(horas), 2, "0") + ":" + StringUtils.leftPad(String.valueOf(minutos), 2, "0") + ":" + StringUtils.leftPad(String.valueOf(segundos), 2, "0");
+                    jLabel1.setText(String.valueOf(hora));
+                }
+            }
+            catch (Exception ex)
+            {
+                try
+                {
+                    throw ex;
+                }
+                catch (Exception ex1)
+                {
+                    Logger.getLogger(screen.class.getName()).log(Level.SEVERE, null, ex1);
+                }
+            }
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btBuscaPrevisaoDoTempo;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -263,4 +373,5 @@ public class screen extends javax.swing.JFrame
     private javax.swing.JRadioButton select1;
     private javax.swing.JRadioButton select2;
     // End of variables declaration//GEN-END:variables
+
 }

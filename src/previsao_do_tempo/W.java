@@ -13,7 +13,7 @@ import static previsao_do_tempo.S.controle;
  *
  * @author guiwe
  */
-public class W
+public class W extends Infra
 {
 
     public List<TOPrevisaoDoTempo> buscarPdt(String nome_cidade, String tp_previsao)

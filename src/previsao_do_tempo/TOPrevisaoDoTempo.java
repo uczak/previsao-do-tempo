@@ -179,68 +179,68 @@ public class TOPrevisaoDoTempo extends TOLocalizacao
             TOPrevisaoDoTempo toPrevisaoDoTempo = new TOPrevisaoDoTempo();
 
             //#region TOLocalizacao 
-            if (Json.has("lat") && Json.get("lat") != null)
+            if (Json.has("lat"))
             {
                 toPrevisaoDoTempo.SetLatitude((double) Json.get("lat"));
             }
-            if (Json.has("lon") && Json.get("lon") != null)
+            if (Json.has("lon"))
             {
                 toPrevisaoDoTempo.SetLongitude((double) Json.get("lon"));
             }
-            if (Json.has("id1") && Json.get("id1") != null)
+            if (Json.has("id1"))
             {
                 toPrevisaoDoTempo.SetCod_city((int) Json.get("id1"));
             }
-            if (Json.has("name") && Json.get("name") != null)
+            if (Json.has("name"))
             {
                 toPrevisaoDoTempo.SetName((String) Json.get("name"));
             }
-            if (Json.has("country") && Json.get("country") != null)
+            if (Json.has("country"))
             {
                 toPrevisaoDoTempo.SetPais((String) Json.get("country"));
             }
             //#endRegion
-            if (Json.has("temp") && Json.get("temp") != null)
+            if (Json.has("temp"))
             {
                 toPrevisaoDoTempo.SetTemperatura((double) Json.get("temp"));
             }
-            if (Json.has("pressure") && Json.get("pressure") != null)
+            if (Json.has("pressure"))
             {
                 toPrevisaoDoTempo.SetPressao((int) Json.get("pressure"));
             }
-            if (Json.has("humidity") && Json.get("humidity") != null)
+            if (Json.has("humidity"))
             {
                 toPrevisaoDoTempo.SetUmidade((int) Json.get("humidity"));
             }
-            if (Json.has("temp_min") && Json.get("temp_min") != null)
+            if (Json.has("temp_min"))
             {
                 toPrevisaoDoTempo.SetTemp_min((double) Json.get("temp_min"));
             }
-            if (Json.has("temp_max") && Json.get("temp_max") != null)
+            if (Json.has("temp_max"))
             {
                 toPrevisaoDoTempo.SetTemp_max((double) Json.get("temp_max"));
             }
-            if (Json.has("visibility") && Json.get("visibility") != null)
+            if (Json.has("visibility"))
             {
                 toPrevisaoDoTempo.SetVisibilidade((int) Json.get("visibility"));
             }
-            if (Json.has("speed") && Json.get("speed") != null)
+            if (Json.has("speed"))
             {
                 toPrevisaoDoTempo.SetVelocidade_vento((double) Json.get("speed"));
             }
-            if (Json.has("sunrise") && Json.get("sunrise") != null)
+            if (Json.has("sunrise"))
             {
                 toPrevisaoDoTempo.SetNas_sol((int) Json.get("sunrise"));
             }
-            if (Json.has("sunset") && Json.get("sunset") != null)
+            if (Json.has("sunset"))
             {
                 toPrevisaoDoTempo.SetPor_sol((int) Json.get("sunset"));
             }
-            if (Json.has("description") && Json.get("description") != null)
+            if (Json.has("description"))
             {
                 toPrevisaoDoTempo.SetDescrisao((String) Json.get("description"));
             }
-            if (Json.has("dt_txt") && Json.get("dt_txt") != null)
+            if (Json.has("dt_txt"))
             {
                 toPrevisaoDoTempo.SetDt_txt((String) Json.get("dt_txt"));
             }
